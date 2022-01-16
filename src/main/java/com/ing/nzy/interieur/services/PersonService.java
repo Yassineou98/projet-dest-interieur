@@ -15,10 +15,13 @@ public interface PersonService {
 
     PersonDto getPersonInfoById(UUID personId);
 
-    void addInfraction(UUID personId, InfractionDto infractionDto);
+    PersonDto getPersonInfoByCin(String cin);
+
+    void addInfraction(String cin, InfractionDto infractionDto);
 
     void createAvisDeRecherche(String cin, UUID infractionId);
 
     void updateAvisDeRecherche(String cin);
+
 
 }

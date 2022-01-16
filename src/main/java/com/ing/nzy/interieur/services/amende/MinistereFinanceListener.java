@@ -33,5 +33,4 @@ public class MinistereFinanceListener {
         personService.updateAvisDeRecherche(amendDto.getCin());
 
     }
-
 }

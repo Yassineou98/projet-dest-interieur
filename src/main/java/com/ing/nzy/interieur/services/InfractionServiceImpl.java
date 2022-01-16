@@ -66,6 +66,11 @@ public class InfractionServiceImpl implements InfractionService {
 
     }
 
+    @Override
+    public InfractionDto getInfractionById(UUID id) {
+        return infractionMapper.infractionToInfractionDto(infractionRepository.findById(id).get());
+    }
+
     private void updateInfraction(Infraction infraction, InfractionDto infractionDto) {
         infraction.setTypePeine(TypePeine.valueOf(infractionDto.getTypePeine()));
         infraction.setCategorie(infractionDto.getCategorie());

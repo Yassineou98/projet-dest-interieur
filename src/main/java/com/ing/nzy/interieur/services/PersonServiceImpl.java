@@ -2,6 +2,7 @@ package com.ing.nzy.interieur.services;
 
 import com.ing.nzy.interieur.domain.Infraction;
 import com.ing.nzy.interieur.domain.Person;
+import com.ing.nzy.interieur.repository.InfractionRepository;
 import com.ing.nzy.interieur.repository.PersonRepository;
 import com.ing.nzy.interieur.services.amende.AmendService;
 import com.ing.nzy.interieur.web.mappers.InfractionMapper;
@@ -29,6 +30,7 @@ public class PersonServiceImpl implements PersonService {
     private final PersonRepository personRepository;
     private final PersonMapper personMapper;
     private final InfractionMapper infractionMapper;
+    private final InfractionRepository infractionRepository;
     private final AmendService amendService;
 
     @Override
@@ -59,9 +61,15 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void addInfraction(UUID personId, InfractionDto infractionDto) {
+    public PersonDto getPersonInfoByCin(String cin) {
+        Person person = getPersonByCin(cin);
+        return personMapper.personToPersonDto(person);
+    }
 
-        Person person = getPersonById(personId);
+    @Override
+    public void addInfraction(String cin, InfractionDto infractionDto) {
+
+        Person person = getPersonByCin(cin);
 
         Infraction infraction = infractionMapper.infractionDtoToInfraction(infractionDto);
 
@@ -69,9 +77,13 @@ public class PersonServiceImpl implements PersonService {
 
         person.addInfraction(infraction);
 
-        personRepository.saveAndFlush(person);
+        infraction.setPerson(person);
 
-        amendService.createAmend(infractionDto);
+        person.setAvisDeRecherche(
+                infraction.getTypePeine() == EMPRISONNEMENT
+        );
+
+        amendService.createAmend(infractionMapper.infractionToInfractionDto(infractionRepository.saveAndFlush(infraction)));
 
     }
 
@@ -89,7 +101,7 @@ public class PersonServiceImpl implements PersonService {
 
         Person person = getPersonByCin(cin);
 
-        Long infractionEmprisonnementNonRegleeCount = person.getInfractions()
+        long infractionEmprisonnementNonRegleeCount = person.getInfractions()
                 .stream()
                 .filter(infraction -> !infraction.getReglee() && infraction.getTypePeine().equals(EMPRISONNEMENT))
                 .count();
@@ -120,6 +132,7 @@ public class PersonServiceImpl implements PersonService {
 
         return personOptional.get();
     }
+
 
 
 }

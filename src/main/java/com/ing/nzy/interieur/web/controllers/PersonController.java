@@ -28,14 +28,19 @@ public class PersonController {
         return new ResponseEntity<>(personService.getAllRecherchee(), HttpStatus.OK);
     }
 
-    @GetMapping("/{personId}")
+    @GetMapping("/{personId}/id")
     public ResponseEntity<?> getPersonById(@PathVariable UUID personId) {
         return new ResponseEntity<>(personService.getPersonInfoById(personId), HttpStatus.OK);
     }
 
-    @PostMapping("/{personId}")
-    public ResponseEntity<?> saveInfraction(@RequestBody InfractionDto infractionDto, @PathVariable UUID personId) {
-        personService.addInfraction(personId, infractionDto);
+    @GetMapping("/{cin}/cin")
+    public ResponseEntity<?> getPersonByCin(@PathVariable String cin) {
+        return new ResponseEntity<>(personService.getPersonInfoByCin(cin), HttpStatus.OK);
+    }
+
+    @PostMapping("/{cin}")
+    public ResponseEntity<?> saveInfraction(@RequestBody InfractionDto infractionDto, @PathVariable String cin) {
+        personService.addInfraction(cin, infractionDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

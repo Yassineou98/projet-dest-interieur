@@ -15,4 +15,6 @@ public interface InfractionService {
     void deleteInfraction(UUID infractionId);
 
     void infractionNotPayedAfterDeadline(AmendDto amendDto);
+
+    InfractionDto getInfractionById(UUID id);
 }

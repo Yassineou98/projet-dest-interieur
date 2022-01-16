@@ -16,12 +16,12 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class AmendServiceImpl implements AmendService {
 
+
     private final JmsTemplate jmsTemplate;
     private final InfractionService infractionService;
 
     @Override
     public void createAmend(InfractionDto infractionDto) {
-        log.info("Sending Jms Message");
         jmsTemplate.convertAndSend(JmsConfig.CREATE_AMEND_QUEUE,
                 CreateAmendMessage.builder().infractionDto(infractionDto).build());
     }
