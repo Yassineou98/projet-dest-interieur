@@ -7,8 +7,8 @@ import com.ing.nzy.interieur.repository.PersonRepository;
 import com.ing.nzy.interieur.services.amende.AmendService;
 import com.ing.nzy.interieur.web.mappers.InfractionMapper;
 import com.ing.nzy.interieur.web.mappers.PersonMapper;
-import com.ing.nzy.model.InfractionDto;
-import com.ing.nzy.model.PersonDto;
+import com.ing.nzy.dto.InfractionDto;
+import com.ing.nzy.dto.PersonDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -90,6 +90,7 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public void createAvisDeRecherche(String cin, UUID infractionId) {
 
+        System.err.println(cin);
         Person person = getPersonByCin(cin);
         person.setAvisDeRecherche(true);
         personRepository.saveAndFlush(person);

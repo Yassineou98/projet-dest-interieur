@@ -1,11 +1,10 @@
-package com.ing.nzy.model;
+package com.ing.nzy.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -16,12 +15,19 @@ import java.util.UUID;
 public class AmendDto {
 
     private String id;
+
     private UUID infractionId;
-    private BigDecimal amount;
+
+    private Double montant;
+
     private String cin;
-    private LocalDate creationDate;
-    private LocalDate dueDate;
+
+    private LocalDate dateCreation;
+
+    private LocalDate dateEcheance;
+
     private String remarks;
-    private Boolean isPayed;
+
+    private Boolean payee;
 
 }

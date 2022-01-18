@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface InfractionRepository extends JpaRepository<Infraction, UUID> {
 
-    @EntityGraph("person")
+    @EntityGraph(attributePaths = {"person"})
     List<Infraction> findAllByPersonId(UUID personId);
 
 }

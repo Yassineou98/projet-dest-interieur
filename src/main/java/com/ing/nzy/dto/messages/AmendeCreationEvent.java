@@ -1,6 +1,6 @@
-package com.ing.nzy.model.messages;
+package com.ing.nzy.dto.messages;
 
-import com.ing.nzy.model.InfractionDto;
+import com.ing.nzy.dto.InfractionDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CreateAmendMessage implements Serializable {
+public class AmendeCreationEvent implements Serializable {
 
     static final long serialVersionUID = -8748289177798674896L;
 

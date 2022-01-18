@@ -1,7 +1,7 @@
 package com.ing.nzy.interieur.web.mappers;
 
 import com.ing.nzy.interieur.domain.Infraction;
-import com.ing.nzy.model.InfractionDto;
+import com.ing.nzy.dto.InfractionDto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

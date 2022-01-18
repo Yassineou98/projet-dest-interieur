@@ -1,8 +1,8 @@
 package com.ing.nzy.interieur.services;
 
 
-import com.ing.nzy.model.InfractionDto;
-import com.ing.nzy.model.PersonDto;
+import com.ing.nzy.dto.InfractionDto;
+import com.ing.nzy.dto.PersonDto;
 
 import java.util.List;
 import java.util.UUID;

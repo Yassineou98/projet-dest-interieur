@@ -1,4 +1,4 @@
-package com.ing.nzy.model;
+package com.ing.nzy.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

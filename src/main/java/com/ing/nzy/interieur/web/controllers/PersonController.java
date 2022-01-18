@@ -1,7 +1,7 @@
 package com.ing.nzy.interieur.web.controllers;
 
 import com.ing.nzy.interieur.services.PersonService;
-import com.ing.nzy.model.InfractionDto;
+import com.ing.nzy.dto.InfractionDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

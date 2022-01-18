@@ -10,9 +10,9 @@ import org.springframework.jms.support.converter.MessageType;
 @Configuration
 public class JmsConfig {
 
-    public final static String CREATE_AMEND_QUEUE = "create-amend";
-    public final static String PAY_AMEND_QUEUE = "amend-payed";
-    public final static String CREATE_RECHERCHE_QUEUE = "create-recherche";
+    public final static String CREATION_AMENDE_TOPIC = "creation-amend";
+    public final static String REGLEE_AMENDE_TOPIC = "regler-amende";
+    public final static String CREATION_RECHERCHE_TOPIC = "creation-recherche";
 
     @Bean
     public MessageConverter messageConverter(ObjectMapper objectMapper) {

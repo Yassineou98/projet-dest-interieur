@@ -10,8 +10,10 @@ import java.util.UUID;
 public interface PersonRepository extends JpaRepository<Person, UUID> {
 
 
+    @EntityGraph(attributePaths = {"infractions"})
     Optional<Person> findById(UUID personId);
 
+    @EntityGraph(attributePaths = {"infractions"})
     Optional<Person> findByCin(String cin);
 
 }
