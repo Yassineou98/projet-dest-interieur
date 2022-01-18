@@ -21,7 +21,6 @@ public class MinistereFinanceListener {
     public void listenAddAvisRecherche(RechercheCreationEvent rechercheCreationEvent) {
 
         AmendDto amendDto = rechercheCreationEvent.getAmendeDto();
-        System.err.println(amendDto);
 
         personService.createAvisDeRecherche(amendDto.getCin(), amendDto.getInfractionId());
     }
